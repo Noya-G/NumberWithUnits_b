@@ -13,8 +13,12 @@
         ///////////////////////////////////////////////////////////////
 
         NumberWithUnits::NumberWithUnits(double num, std::string unit){
-        this->num=num;
-        this->unit=unit;
+            if(check_unit(unit))
+            {
+                this->num=num;
+                this->unit=unit;
+            }
+            else  throw invalid_argument("[-] Invalid Unit");
         }
         NumberWithUnits::NumberWithUnits(const NumberWithUnits& n)
         {
@@ -35,10 +39,18 @@
         }
 
 
+
         ///////////////////////////////////////////////////////////////
         ///////////////////////Private Methods/////////////////////////
         ///////////////////////////////////////////////////////////////
-
+        bool NumberWithUnits::check_unit(std::string u)
+        {
+            if (graph.find(u) == graph.end())
+            {
+                return false;
+            }
+            return true;
+        }
         void NumberWithUnits::set_graph(const string &unitA, const string &unitB)
         {
             //add to the graph from first way
@@ -253,6 +265,27 @@
         return os;
     }
     std::istream &ariel::operator>>(std::istream &is, NumberWithUnits &nwu) 
-    {return is;}
+    {
+        char cha = 0;
+        string unit;
+        double n = 0;
+        is >> n >> cha >> unit >> cha;
+
+        if (unit[unit.length() - 1] == ']')
+        {
+            unit.pop_back();
+        }
+        if (cha == '-')
+        {
+            is.putback('-');
+        }
+        if (graph.find(unit) == graph.end())
+        {
+            throw std::invalid_argument(unit + "[-] Please enter valid unit");
+        }
+        nwu.num = n;
+        nwu.unit = unit;
+        return is;
+    }
     //==============================================================
     
