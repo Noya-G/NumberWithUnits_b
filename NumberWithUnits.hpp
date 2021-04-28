@@ -14,9 +14,11 @@ namespace ariel{
         std::string unit;
         double num;
         static void set_graph(const std::string &src_unit, const std::string &dest_unit);
+        //NumberWithUnits adjust_units(const NumberWithUnits &nwu1,const NumberWithUnits &nwu2);
         NumberWithUnits adjust_units(const NumberWithUnits &nwu);
         NumberWithUnits adjust_unit();
         double adjust(const NumberWithUnits& nwu);
+        bool check_unit(std::string u);
         
         public:
         NumberWithUnits(double num, std::string unit);
