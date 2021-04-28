@@ -5,6 +5,7 @@
 #include <sstream>
 #include <map>
 
+#define Epsilone 0.0001;
 
 namespace ariel{
     class NumberWithUnits
@@ -13,8 +14,9 @@ namespace ariel{
         std::string unit;
         double num;
         static void set_graph(const std::string &src_unit, const std::string &dest_unit);
-        NumberWithUnits& adjust_units(const NumberWithUnits &nwu);
-        NumberWithUnits& adjust_unit();
+        NumberWithUnits adjust_units(const NumberWithUnits &nwu1,const NumberWithUnits &nwu2);
+        NumberWithUnits adjust_unit(const NumberWithUnits &nwu);
+        double adjust(const NumberWithUnits& nwu);
         
         public:
         NumberWithUnits(double num, std::string unit);
@@ -25,13 +27,13 @@ namespace ariel{
 
         //===============================================================
         //Arithmetic Operators===========================================
-        NumberWithUnits& operator+ (const NumberWithUnits& nwu);
-        NumberWithUnits& operator+= (const NumberWithUnits& nwu);
-        NumberWithUnits& operator+ ();
+        NumberWithUnits operator+ (const NumberWithUnits& nwu);
+        NumberWithUnits operator+=(const NumberWithUnits& nwu);
+        NumberWithUnits operator+ ();
         friend NumberWithUnits operator+(double number,const NumberWithUnits &nwu);
-        NumberWithUnits& operator- (const NumberWithUnits& nwu);
-        NumberWithUnits& operator-= (const NumberWithUnits& nwu);
-        NumberWithUnits& operator- () ;
+        NumberWithUnits operator- (const NumberWithUnits& nwu);
+        NumberWithUnits operator-= (const NumberWithUnits& nwu);
+        NumberWithUnits operator-();
         //===============================================================
 
 
