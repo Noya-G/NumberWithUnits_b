@@ -14,8 +14,8 @@ namespace ariel{
         std::string unit;
         double num;
         static void set_graph(const std::string &src_unit, const std::string &dest_unit);
-        NumberWithUnits adjust_units(const NumberWithUnits &nwu1,const NumberWithUnits &nwu2);
-        NumberWithUnits adjust_unit(const NumberWithUnits &nwu);
+        NumberWithUnits adjust_units(const NumberWithUnits &nwu);
+        NumberWithUnits adjust_unit();
         double adjust(const NumberWithUnits& nwu);
         
         public:
@@ -30,7 +30,6 @@ namespace ariel{
         NumberWithUnits operator+ (const NumberWithUnits& nwu);
         NumberWithUnits operator+=(const NumberWithUnits& nwu);
         NumberWithUnits operator+ ();
-        friend NumberWithUnits operator+(double number,const NumberWithUnits &nwu);
         NumberWithUnits operator- (const NumberWithUnits& nwu);
         NumberWithUnits operator-= (const NumberWithUnits& nwu);
         NumberWithUnits operator-();
@@ -64,8 +63,8 @@ namespace ariel{
 
         //==============================================================
         //Multiplication Operators======================================
-        NumberWithUnits& operator* (double num1);
-        friend NumberWithUnits operator*(double number, const NumberWithUnits &nwu);
+        friend NumberWithUnits operator* (double num1, const NumberWithUnits &nwu);
+        friend NumberWithUnits operator* (const NumberWithUnits &nwu, double num1);
         //==============================================================
 
 
