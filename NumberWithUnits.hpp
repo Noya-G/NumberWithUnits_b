@@ -17,7 +17,7 @@ namespace ariel
         string unit;
         double adjust_unit(const NumberWithUnits &unit1) const;
         static void update_graph(const string &src_unit, const string &dest_unit);
-        void chack_valid_unit(const string &unit);
+        bool chack_valid_unit(const string &unit);
 
     public:
         //builder
