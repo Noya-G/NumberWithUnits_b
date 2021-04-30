@@ -57,7 +57,7 @@ namespace ariel
     }
     NumberWithUnits::NumberWithUnits(double n, const string &u)
     {
-        NumberWithUnits::chack_valid_unit();
+        NumberWithUnits::chack_valid_unit(u);
         this->num = n;
         this->unit = u;
     }
