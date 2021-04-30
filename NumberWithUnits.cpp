@@ -63,9 +63,9 @@ namespace ariel
     }
     double NumberWithUnits::adjust_unit(const NumberWithUnits &unit1) const
     {
-        if (!(unit == unit1.unit || graph[unit].find(unit1.unit) != graph[unit].end()))
+        if (!(unit == unit1.unit || check_valid_unit(unit1); != graph[unit].end()))
         {
-            throw invalid_argument("[-] Diffrent Unit Group");
+            continue;
         }
         if (unit == unit1.unit)
         {
@@ -73,12 +73,13 @@ namespace ariel
         }
         return unit1.num * graph[unit1.unit][unit];
     }
-    void NumberWithUnits::check_valid_unit(const string &unit)
+    bool NumberWithUnits::check_valid_unit(const string &unit)
     {
         if (graph.find(unit) == graph.end())
         {
             throw invalid_argument(unit + "[-] Please Enter Valid Unit");
         }
+        return true;
     }
 
     ///////////////////////////////////////////////////////////////
